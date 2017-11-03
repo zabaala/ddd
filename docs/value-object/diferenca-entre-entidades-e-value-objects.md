@@ -1,7 +1,5 @@
 # Qual a diferença entre Value Object e Entidades?
 
-> Este artigo é uma tradução desta publicação: http://culttt.com/2014/04/30/difference-entities-value-objects/
-
 Como você está começando a mergulhar no mundo da programação, você está começando a descobrir uma série de novos conceitos e 
 teorias. Uma dessas idéias, que não é tão clara, é o Value Object. Um value object é um conceito importante do Domain Driven 
 Design (DDD). 
@@ -12,7 +10,7 @@ unicamente sobre Value Objects.
 > Nota: Estou considerando que você possui um bom entendimento sobre Programaço Orientada a Objeto (POO). Se não for o seu 
 caso, provavelmente você irá ler sobre POO antes de continuar com esta leitura.
 
-# Entidades versus Value Objects
+## Entidades versus Value Objects
 
 Na Programação Orientada à Objetos, nós representados atributos e métodos relacionados como um Objeto. Por exemplo, 
 uma **Pessoa** pode ser um Objeto em nossa aplicação. Uma Pessoa vai possuir um nome, um endereço de e-mail e uma senha, assim 
@@ -135,5 +133,19 @@ $p1 == $p2; // false
 
 Não é porque duas pessoas tem o mesmo nome, que elas são as mesmas. 
 
+## Como identificar Value Objects?
 
+Como você pode ver, facilmente distinguímos entre Entidades e Value Objects, quando um objeto é representado por um `id`. Os atributos de uma entidade pode ser modificados, mas eles continuam mantendo a representação com o nosso sistema porque ele possui um identificado único. Enquanto que um Value Object é uma instância única de um objeto que é criado e, em seguida, destruído. Pra gente a instância de um Value Object não importa, já que nós não podemos modificar nenhum de seus atributos.
+
+Com isso, então, como você fará para saber quando optar entre uma Entidade ou entre um Value Object? Bem, a decisão se resumirá ao contexto da aplicação.
+
+Considere que nossa aplicação agora é o Foursquare. Agora cada Localização única possui um identificador único, porque diferentes Pessoas agora podem fazer checkin nos lugares (Localização). Logo, dentro desse novo contexto, Localização passa a ser uma Entidade, ao invés de um Objeto Valor. Sem a sua identificação, será impossível permitir que as Pessoas façam checkin num determinado local.
+
+Por outro lado, agora imagine que nós somos donos de uma usina que grava as atividades ao redor das suas cercas de segurança. A cerca de segurança posui muitos locais onde atividades so capturadas para fins de monitoramento. Cada Localização em torno da cerca de segurança é uma entidade, porque devemos nos importar em capturar as atividades de cada um desses locais. Sempre que uma Pessoa suspeita passa pelas cercas, um incidente é gravado no banco de dados. 
+
+Neste exemplo, a Pessoa suspeita é um Value Object porque nós não estamos preocupados com nenhuma Pessoa em partilar, nós só nos preocupamos com a Pessoa que passou pelas nossas cercas.
+
+## Referências
+
+Este artigo é uma tradução [desta publicação](http://culttt.com/2014/04/30/difference-entities-value-objects/) e todos os créditos são de seu autor. 
 
